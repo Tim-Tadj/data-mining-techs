@@ -27,12 +27,11 @@ def quantile_derivative_autothresh(array:np.ndarray, ord:int, n_points=100):
 
     return np.array(spikes)
 
-def min_max_thresh_QDautothresh(array:np.ndarray, ord:int, n_points=100):
-    spikes = quantile_derivative_autothresh(df_filtered['temperature'], ord, n_points=n_points)
+def quantile_minmax_autothresh(array:np.ndarray, ord:int, n_points=100):
+    spikes = quantile_derivative_autothresh(array, ord, n_points=n_points)
     min_thresh = spikes[spikes < n_points/2].max()
     max_thresh = spikes[spikes > n_points/2].min()
 
-    filtered = array[ (array > np.quantile(array, min_thresh/n_points)) & (array < np.quantile(array, max_thresh/n_points))]
-    return filtered
+    return min_thresh, max_thresh
     
 
