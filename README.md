@@ -12,7 +12,6 @@ Takes nth order gradient of the quantiles of input array and automatically deter
 
 Quantiles may have variable len sampling
 
-Preset custom filters
 ```python
 def quantile_minmax_autothresh(array:np.ndarray, ord:int, n_points=100)
 ```
